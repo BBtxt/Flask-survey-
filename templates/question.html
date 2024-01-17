@@ -1,8 +1,18 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
 
-{% block content %}
+<h3>{{questions}}</h3>
 
-
-<h3>{{question}}</h3>
+<form action="/answer" method="post">
+  {% if allow_text %}
+  <input type="text" name="answer" />
+  {% else %}  
+  {% for choice in choices %}
+  <input type="radio" name="answer" value="{{ choice }}" />
+  {{ choice }}
+  <br />
+  {% endfor %}
+  {% endif %}
+  <input type="submit" value="Submit" />
+</form>
 {% endblock %}
