@@ -52,3 +52,7 @@ surveys = {
     "satisfaction": satisfaction_survey,
     "personality": personality_quiz,
 }
+
+flexxer = Question("Are you a flexxer?", "Please test to check if you are a true flexer", True)
+
+print(flexxer.allow_text)
