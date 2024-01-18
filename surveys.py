@@ -54,5 +54,6 @@ surveys = {
 }
 
 flexxer = Question("Are you a flexxer?", "Please test to check if you are a true flexer", True)
-
-print(flexxer.allow_text)
+question = satisfaction_survey.questions[0].question
+print(question)
+print(len(satisfaction_survey.questions))

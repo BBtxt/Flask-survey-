@@ -3,16 +3,16 @@
 
 <h3>{{questions}}</h3>
 
-<form action="/answer" method="post">
+<form action="/answer" method="POST">
   {% if allow_text %}
   <input type="text" name="answer" />
   {% else %}  
   {% for choice in choices %}
-  <input type="radio" name="answer" value="{{ choice }}" />
+  <input type="radio" name="answer" value="{{ choice }}" required="True" />
   {{ choice }}
   <br />
   {% endfor %}
   {% endif %}
-  <input type="submit" value="Submit" />
+    <button>Submit</button>
 </form>
 {% endblock %}
