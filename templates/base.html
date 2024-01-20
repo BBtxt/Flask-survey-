@@ -8,10 +8,13 @@
 </head>
 
 <body>
-    <!-- <nav>
+    <!-- <header>
             <a href="/">Home</a>
-    </nav> -->
-    {% block content %}{% endblock %}
+    </header> -->
+    {% for msg in get_flashed_messages() %}
+    <p>{{ msg }}</p>
+    {% endfor %}
+{% block content %}{% endblock %}
     <footer>
         <p>&copy; 2020 - Flask Survey</p>
     </footer>

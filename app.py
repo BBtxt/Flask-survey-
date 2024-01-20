@@ -1,16 +1,10 @@
 from flask import Flask, request, render_template, redirect, flash, session
 from surveys import satisfaction_survey as survey
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
 
-# the toolbar is only enabled in debug mode:
-app.debug = True
-
-# set a 'SECRET_KEY' to enable the Flask session cookies
-app.config['SECRET_KEY'] = 'Flexxx123'
-
-toolbar = DebugToolbarExtension(app)
+# debug = DebugToolbarExtension(app)
 
 RESPONSES_KEY = "responses"
 
@@ -34,6 +28,7 @@ def questions(question_id):
     if len(responses) == len(survey.questions):
         return redirect("/thanks")
     if question_id != len(responses):
+        flash(f"Invalid question id: {question_id}.")
         return redirect(f"/questions/{len(responses)}")
     
     questions = survey.questions[question_id].question
@@ -57,4 +52,5 @@ def answer():
 
 @app.route("/thanks")
 def thanks():
+    flash("feel free to close this tab")
     return render_template("thanks.html")
